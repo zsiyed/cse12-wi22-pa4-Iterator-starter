@@ -28,7 +28,6 @@ public class MyLinkedListPublicTester {
 
     @Test
     public void testConstructor() {
-        assertTrue("The initial value of forward", listLen1Iter.forward);
         assertFalse("The initial value of canRemoveOrSet", listLen1Iter.canRemoveOrSet);
         assertEquals("The index of the element the iterator is initially pointing on", 0, listLen1Iter.idx);
         assertEquals("The data of initial iterator's left", listLen1.head, listLen1Iter.left);
