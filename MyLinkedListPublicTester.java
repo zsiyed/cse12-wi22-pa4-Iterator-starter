@@ -44,8 +44,8 @@ public class MyLinkedListPublicTester {
         assertFalse("The initial value of canRemoveOrSet",
                 listLen1Iter.canRemoveOrSet);
         assertEquals(
-                "The index of the element the iterator is initially pointing on",
-                0, listLen1Iter.idx);
+                "The index of the element the iterator is initially pointing" +
+                " on", 0, listLen1Iter.idx);
         assertEquals("The data of initial iterator's left", listLen1.head,
                 listLen1Iter.left);
         assertEquals("The data of initial iterator's left", null,
@@ -332,7 +332,8 @@ public class MyLinkedListPublicTester {
         listLen2Iter.add("CSE 12");
         assertEquals("Valid add left", "CSE 12",
                 listLen2Iter.left.getElement());
-        assertEquals("Valid add right", "Cao", listLen2Iter.right.getElement());
+        assertEquals("Valid add right", "Cao", 
+                listLen2Iter.right.getElement());
         assertEquals("Index change after add", 2, listLen2Iter.idx);
         assertFalse("Cannot remove immediately after add",
                 listLen2Iter.canRemoveOrSet);
