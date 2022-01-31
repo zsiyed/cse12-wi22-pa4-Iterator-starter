@@ -97,8 +97,6 @@ public class MyLinkedList<E> extends AbstractList<E> {
 	/** Only 0-argument constructor is defined */
 	// MyLinkedList empty constructor
 	public MyLinkedList() {
-		/* Add your implementation here */
-		// TODO
 		head = new Node(null);
 		tail = new Node(null);
 		this.head.setNext(this.tail);
@@ -151,15 +149,25 @@ public class MyLinkedList<E> extends AbstractList<E> {
 		else if (data == null){
 			throw new NullPointerException();
 		}
-		Node currNode = head;
-		for (int i = 0; i<index; i++) { 
-			currNode = currNode.next; 
+
+		if(index == size)
+		{
+			add(data);
+			size--;
 		}
-		Node newNode = new Node(data);
-		currNode.next.setPrev(newNode);
-		newNode.setNext(currNode.next);
-		newNode.setPrev(currNode);
-		currNode.setNext(newNode);	
+		else
+		{
+			Node currNode = head;
+			for (int i = 0; i<index; i++) { 
+				currNode = currNode.next; 
+			}
+			Node newNode = new Node(data);
+			currNode.next.setPrev(newNode);
+			newNode.setNext(currNode.next);
+			newNode.setPrev(currNode);
+			currNode.setNext(newNode);
+		}
+			
 		size++;
 	}
 
@@ -174,8 +182,12 @@ public class MyLinkedList<E> extends AbstractList<E> {
 			throw new NullPointerException();
 		}
 		Node newNode = new Node(data);
+		newNode.setNext(tail); //
+		newNode.setPrev(tail.getPrev()); //
 		tail.prev.setNext(newNode);
 		tail.setPrev(newNode);
+		
+		// add(size-1, data);
 		size++;
 		return true; // TODO
 	}
@@ -188,7 +200,7 @@ public class MyLinkedList<E> extends AbstractList<E> {
 
      */
 	public E set(int index, E data) {
-		if (index<0 || index>size){
+		if (index<0 || index>=size){
 			throw new IndexOutOfBoundsException();
 		} 
 		else if (data == null){
@@ -209,7 +221,7 @@ public class MyLinkedList<E> extends AbstractList<E> {
 	 * @return E- returns the data that was replaced
      */
 	public E remove(int index) {
-		if (index<0 || index>size){
+		if (index<0 || index>=size){
 			throw new IndexOutOfBoundsException();
 		} 
 		Node currNode = head.next;
@@ -250,7 +262,7 @@ public class MyLinkedList<E> extends AbstractList<E> {
 	 * @return Node- returns the node at given index
      */
 	protected Node getNth(int index) {
-		if (index<0 || index>size){
+		if (index<0 || index>=size){
 			throw new IndexOutOfBoundsException();
 		} 
 		Node currNode = head;
