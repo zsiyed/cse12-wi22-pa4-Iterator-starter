@@ -369,20 +369,9 @@ public class MyLinkedList<E> extends AbstractList<E> {
 				right.setPrev(newNode);
 				left.setNext(newNode);
 			}
-			
-
-			
 			left = newNode;
 			canRemoveOrSet = false;
 			idx++;
-
-
-			/*Node newNode = new Node(element);
-			left.setNext(newNode);
-			right.setPrev(newNode);
-			newNode.setNext(right);
-			newNode.setPrev(left);
-			idx++;*/
 		}
 
 		public void set(E element){
@@ -421,8 +410,5 @@ public class MyLinkedList<E> extends AbstractList<E> {
 				throw new IllegalStateException();
 			}
 		}
-
-        // more methods, etc.
-
-}
+	}
 }

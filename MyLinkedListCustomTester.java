@@ -54,7 +54,7 @@ public class MyLinkedListCustomTester {
     }
 
     /**
-     * TODO: test the next method when [...]
+     * test the next method when at the end of a list.
      */
     @Test
     public void testNext() {
@@ -72,14 +72,22 @@ public class MyLinkedListCustomTester {
     }
 
     /**
-     * TODO: test the hasPrevious method when [fill in another one here]
+     * test the hasPrevious method with an empty list
      */
     @Test
     public void testHasPrevious() {
+        boolean exceptionThrown = false;
+        try {
+            testEmptyListIter.previous();
+        } catch (NoSuchElementException e) {
+            exceptionThrown = true;
+            System.out.println("Succesfully Caught NoSuchElementException @ testPrevious()");
+        }
+        assertTrue("testPrevious()", exceptionThrown);
     }
 
     /**
-     * TODO: test to make sure a NoSuchElementExceotion is thrown when applicable
+     * test to make sure a NoSuchElementExceotion is thrown when applicable
      */
     @Test
     public void testPrevious() {
@@ -97,7 +105,7 @@ public class MyLinkedListCustomTester {
     }
 
     /**
-     * TODO: test the nextIndex method with an empty list
+     * test the nextIndex method with an empty list
      */
     @Test
     public void testNextIndex() {
@@ -105,7 +113,7 @@ public class MyLinkedListCustomTester {
     }
 
     /**
-     * TODO: test the previousIndex method with an empty list
+     * test the previousIndex method with an empty list
      */
     @Test
     public void testPreviousIndex() {
@@ -113,7 +121,7 @@ public class MyLinkedListCustomTester {
     }
 
     /**
-     * TODO: test the set method's ability to catch applicable exceptions
+     * test the set method's ability to catch applicable exceptions
      */
     @Test
     public void testSet() {
@@ -139,7 +147,7 @@ public class MyLinkedListCustomTester {
     }
 
     /**
-     * TODO: test the remove method when 
+     * test the remove's method ability to throw an IllegalStateException after adding an element.
      */
     @Test
     public void testRemoveTestOne() {
@@ -157,7 +165,7 @@ public class MyLinkedListCustomTester {
     }
 
     /**
-     * TODO: test the remove method when [fill in another one here]
+     * test the remove method when [fill in another one here]
      */
     @Test
     public void testRemoveTestTwo() {
@@ -166,7 +174,7 @@ public class MyLinkedListCustomTester {
     }
 
     /**
-     * TODO: test the add method when [...]
+     * test the add method when adding at the end of a list.
      */
     @Test
     public void testAdd() {
