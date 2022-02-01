@@ -276,7 +276,7 @@ public class MyLinkedListPublicTester {
      */
     @Test
     public void testRemoveForward() {
-        // equivalent to listLen2Iter.next();
+        //equivalent to listLen2Iter.next();
         listLen2Iter.left = listLen2.head.getNext();
         listLen2Iter.right = listLen2.head.getNext().getNext();
         listLen2Iter.idx = 1;
@@ -286,71 +286,71 @@ public class MyLinkedListPublicTester {
         listLen2Iter.remove();
         assertEquals("Valid remove when forward", null,
                 listLen2Iter.left.getElement());
-        // assertEquals("Valid remove when forward, shouldn't change", "Cao",
-        //         listLen2Iter.right.getElement());
-        // assertEquals("Index should decrement after removal", 0,
-        //         listLen2Iter.idx);
-        // assertFalse("Prevent another remove or set",
-        //         listLen2Iter.canRemoveOrSet);
+        assertEquals("Valid remove when forward, shouldn't change", "Cao",
+                listLen2Iter.right.getElement());
+        assertEquals("Index should decrement after removal", 0,
+                listLen2Iter.idx);
+        assertFalse("Prevent another remove or set",
+                listLen2Iter.canRemoveOrSet);
     }
 
     /**
      * Test remove() when forward is false
      */
-//     @Test
-//     public void testRemoveBackward() {
-//         // equivalent to listLen2Iter.next();
-//         listLen2Iter.left = listLen2.head.getNext();
-//         listLen2Iter.right = listLen2.head.getNext().getNext();
-//         listLen2Iter.idx = 1;
-//         listLen2Iter.forward = false;
-//         listLen2Iter.canRemoveOrSet = true;
+    @Test
+    public void testRemoveBackward() {
+        // equivalent to listLen2Iter.next();
+        listLen2Iter.left = listLen2.head.getNext();
+        listLen2Iter.right = listLen2.head.getNext().getNext();
+        listLen2Iter.idx = 1;
+        listLen2Iter.forward = false;
+        listLen2Iter.canRemoveOrSet = true;
 
-//         listLen2Iter.remove();
-//         assertEquals("Valid remove when forward", null,
-//                 listLen2Iter.right.getElement());
-//         assertEquals("Valid remove when backward, shouldn't change", "Paul",
-//                 listLen2Iter.left.getElement());
-//         assertEquals("Index shouldn't decrement after removal", 1,
-//                 listLen2Iter.idx);
-//         assertFalse("Prevent another remove or set",
-//                 listLen2Iter.canRemoveOrSet);
-//     }
+        listLen2Iter.remove();
+        assertEquals("Valid remove when forward", null,
+                listLen2Iter.right.getElement());
+        assertEquals("Valid remove when backward, shouldn't change", "Paul",
+                listLen2Iter.left.getElement());
+        assertEquals("Index shouldn't decrement after removal", 1,
+                listLen2Iter.idx);
+        assertFalse("Prevent another remove or set",
+                listLen2Iter.canRemoveOrSet);
+    }
 
-//     /**
-//      * Test add() in the middle of the list
-//      */
-//     @Test
-//     public void testAddValidIndex() {
-//         // equivalent to listLen2Iter.next();
-//         listLen2Iter.left = listLen2.head.getNext();
-//         listLen2Iter.right = listLen2.head.getNext().getNext();
-//         listLen2Iter.idx = 1;
-//         listLen2Iter.forward = true;
-//         listLen2Iter.canRemoveOrSet = true;
+    /**
+     * Test add() in the middle of the list
+     */
+    @Test
+    public void testAddValidIndex() {
+        // equivalent to listLen2Iter.next();
+        listLen2Iter.left = listLen2.head.getNext();
+        listLen2Iter.right = listLen2.head.getNext().getNext();
+        listLen2Iter.idx = 1;
+        listLen2Iter.forward = true;
+        listLen2Iter.canRemoveOrSet = true;
 
-//         listLen2Iter.add("CSE 12");
-//         assertEquals("Valid add left", "CSE 12",
-//                 listLen2Iter.left.getElement());
-//         assertEquals("Valid add right", "Cao", 
-//                 listLen2Iter.right.getElement());
-//         assertEquals("Index change after add", 2, listLen2Iter.idx);
-//         assertFalse("Cannot remove immediately after add",
-//                 listLen2Iter.canRemoveOrSet);
-//     }
+        listLen2Iter.add("CSE 12");
+        assertEquals("Valid add left", "CSE 12",
+                listLen2Iter.left.getElement());
+        assertEquals("Valid add right", "Cao", 
+                listLen2Iter.right.getElement());
+        assertEquals("Index change after add", 2, listLen2Iter.idx);
+        assertFalse("Cannot remove immediately after add",
+                listLen2Iter.canRemoveOrSet);
+    }
 
-//     /**
-//      * Test add() in the beginning of the list
-//      */
-//     @Test
-//     public void testAddFirstIndex() {
-//         listLen2Iter.add("CSE 12");
-//         assertEquals("Valid add left", "CSE 12",
-//                 listLen2Iter.left.getElement());
-//         assertEquals("Valid add right", "Paul",
-//                 listLen2Iter.right.getElement());
-//         assertEquals("Index change after add", 1, listLen2Iter.idx);
-//         assertFalse("Cannot remove immediately after add",
-//                 listLen2Iter.canRemoveOrSet);
-//     }
+    /**
+     * Test add() in the beginning of the list
+     */
+    @Test
+    public void testAddFirstIndex() {
+        listLen2Iter.add("CSE 12");
+        assertEquals("Valid add left", "CSE 12",
+                listLen2Iter.left.getElement());
+        assertEquals("Valid add right", "Paul",
+                listLen2Iter.right.getElement());
+        assertEquals("Index change after add", 1, listLen2Iter.idx);
+        assertFalse("Cannot remove immediately after add",
+                listLen2Iter.canRemoveOrSet);
+    }
 }

@@ -348,12 +348,41 @@ public class MyLinkedList<E> extends AbstractList<E> {
 		}
 
 		public void add(E element){
+			if(element == null)
+			{
+				throw new NullPointerException();
+			}
+
 			Node newNode = new Node(element);
+			Node prevNode = left;
+			Node nextNode = right;
+			if(idx == 0)
+			{
+				head.setNext(newNode);
+				right.setPrev(prevNode);
+			}
+			else
+			{
+				newNode.setNext(nextNode);
+				newNode.setPrev(prevNode);
+
+				right.setPrev(newNode);
+				left.setNext(newNode);
+			}
+			
+
+			
+			left = newNode;
+			canRemoveOrSet = false;
+			idx++;
+
+
+			/*Node newNode = new Node(element);
 			left.setNext(newNode);
 			right.setPrev(newNode);
 			newNode.setNext(right);
 			newNode.setPrev(left);
-			idx++;
+			idx++;*/
 		}
 
 		public void set(E element){
@@ -374,18 +403,19 @@ public class MyLinkedList<E> extends AbstractList<E> {
 		}
 
 		public void remove(){
+
 			if (forward == true && canRemoveOrSet){
-				left.getPrev().setNext(left.getNext());
-				left.getNext().setPrev(left.getPrev());
+				right.setPrev(left.getPrev());
+				left = left.getPrev();
 				
 				canRemoveOrSet = false;
-				// idx--;
+				idx--;
 			}
 			else if (canRemoveOrSet){
-				right.getPrev().setNext(right.getNext());
-				right.getNext().setPrev(right.getPrev());
+				left.setNext(right.getNext());
+				right = right.getNext();
+
 				canRemoveOrSet = false;
-				// idx--;
 			}
 			else{
 				throw new IllegalStateException();
