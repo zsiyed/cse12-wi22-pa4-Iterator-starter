@@ -312,7 +312,7 @@ public class MyLinkedList<E> extends AbstractList<E> {
 		* @return Boolean - true if there is a next node; false otherwise
 		*/
         public boolean hasNext() {
-			if (idx != size()){
+			if (idx != size()){ // checks that idx is not after the last element
 				return true;
 			}
 			return false;
@@ -329,11 +329,11 @@ public class MyLinkedList<E> extends AbstractList<E> {
 				throw new NoSuchElementException();
 			}
 			left = right;
-			right = right.getNext();
+			right = right.getNext(); // sets right to rights next node
 			idx++;
 			canRemoveOrSet = true;
 			forward = true;
-			return left.getElement();
+			return left.getElement(); // returns new left element
 		}
 
 		/**
@@ -345,7 +345,7 @@ public class MyLinkedList<E> extends AbstractList<E> {
 			// 	return true;
 			// }
 			// return false;
-			if (idx == 0){
+			if (idx == 0){ // makes sure index is not 0
 				return false;
 			}
 			return true;
@@ -360,7 +360,7 @@ public class MyLinkedList<E> extends AbstractList<E> {
 				throw new NoSuchElementException();
 			}
 			right = left;
-			left = left.getPrev();
+			left = left.getPrev(); // left becomes lefts previous
 			idx--;
 			canRemoveOrSet = true;
 			forward = false;
@@ -393,13 +393,13 @@ public class MyLinkedList<E> extends AbstractList<E> {
 				throw new NullPointerException();
 			}
 
-			Node newNode = new Node(element);
+			Node newNode = new Node(element); // creates new node with element
 			Node prevNode = left;
 			Node nextNode = right;
 			if(idx == 0)
 			{
 				head.setNext(newNode);
-				right.setPrev(prevNode);
+				right.setPrev(prevNode); // adds after head if index is 0
 			}
 			else
 			{
@@ -409,7 +409,7 @@ public class MyLinkedList<E> extends AbstractList<E> {
 				right.setPrev(newNode);
 				left.setNext(newNode);
 			}
-			left = newNode;
+			left = newNode; // sets left to added node
 			canRemoveOrSet = false;
 			idx++;
 		}
@@ -423,11 +423,11 @@ public class MyLinkedList<E> extends AbstractList<E> {
 				throw new NullPointerException();
 			}
 			if (forward == true && canRemoveOrSet){
-				left.setElement(element);
+				left.setElement(element); // sets left if forward is true
 				canRemoveOrSet = false;
 			}
 			else if (canRemoveOrSet){
-				right.setElement(element);
+				right.setElement(element); // sets right if forward is false
 				canRemoveOrSet = false;
 			}
 			else{
@@ -443,25 +443,25 @@ public class MyLinkedList<E> extends AbstractList<E> {
 
 			if (forward == true && canRemoveOrSet){
 
-				if(idx == 1)
+				if(idx == 1) // if removing index 1, update head
 				{
 					head.setNext(left.getNext());
 				}
 				right.setPrev(left.getPrev());
-				left = left.getPrev();
+				left = left.getPrev(); 
 				canRemoveOrSet = false;
 				idx--;
 			}
 			else if (canRemoveOrSet){
-				if(idx == size-1)
+				if(idx == size-1) // updates tail if removing size-1
 				{
 					tail.setPrev(right.getPrev());
 				}
-				left.setNext(right.getNext());
+				left.setNext(right.getNext()); // links nodes
 				right = right.getNext();
 				canRemoveOrSet = false;
 			}
-			else{
+			else{ // cannot remove head or tail
 				throw new IllegalStateException();
 			}
 		}
