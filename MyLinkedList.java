@@ -1,11 +1,13 @@
 /**
- * TODO: Add your file header
- * Name: Zed Siyed
- * Email: zsiyed@ucsd.edu
+ * Name: Zed Siyed and Rohun Kulshrestha
+ * Email: zsiyed@ucsd.edu / rokulshrestha@ucsd.edu
  * Sources used: None
  * 
- * this class has the linkedList class and that contains a node class
- * this is used to create linkedList objects that contain nodes
+ * this file contains a node class that has methods that create and modify nodes, 
+ * which are implemented into a MyLinkedList class, which has capabilities that create
+ * and modify a Linked List. Newly added is a LinkedListIterater class that
+ * contains methods that create and modify a linked list WITH iterator.
+ * 
  */
 
 import java.util.AbstractList;
@@ -276,6 +278,13 @@ public class MyLinkedList<E> extends AbstractList<E> {
 		return (Node) null;  // TODO
 	}
 
+	/*This is the MyListIterator class that implements the ListIterator interface.
+	* This class is designed to create and modify a linked list using methods such as, 
+	* next, previous, remove, set, etc. using instance variabels such as left, right
+	* idx, forward, and canRemoveOrSet. All together, these methods and instance varibales
+	* help iterate through a Doubly Linked List with nodes.
+	*
+	*/
 	protected class MyListIterator implements ListIterator<E> {
 
 
@@ -285,7 +294,9 @@ public class MyLinkedList<E> extends AbstractList<E> {
 		boolean forward;
 		boolean canRemoveOrSet;
 
-        // MyListIterator methods
+        /**
+		* Class default constructor that initialzes all instance varibles
+		*/
 		public MyListIterator(){
 			// if (size() != 0){
 				left = head;
@@ -296,6 +307,10 @@ public class MyLinkedList<E> extends AbstractList<E> {
 				
 		}
 
+		/**
+		* determines if the linked list has a next node.
+		* @return Boolean - true if there is a next node; false otherwise
+		*/
         public boolean hasNext() {
 			if (idx != size()){
 				return true;
@@ -304,6 +319,11 @@ public class MyLinkedList<E> extends AbstractList<E> {
 			
         }
 
+		
+		/**
+		* moves the pointer of the list forward and updates applicable instance variables
+		* @return E - returns the element at the next node
+		*/
 		public E next(){
 			if (!hasNext()){
 				throw new NoSuchElementException();
@@ -316,6 +336,10 @@ public class MyLinkedList<E> extends AbstractList<E> {
 			return left.getElement();
 		}
 
+		/**
+		* determines if the linked list has a previous node.
+		* @return Boolean - true if there is a next node; false otherwise
+		*/
 		public boolean hasPrevious(){
 			// if (left.getElement() != null){
 			// 	return true;
@@ -327,6 +351,10 @@ public class MyLinkedList<E> extends AbstractList<E> {
 			return true;
 		}
 
+		/**
+		* moves the pointer of the list backward and updates applicable instance variables
+		* @return E - returns the element at the previous node
+		*/
 		public E previous(){
 			if (!hasPrevious()){
 				throw new NoSuchElementException();
@@ -339,14 +367,26 @@ public class MyLinkedList<E> extends AbstractList<E> {
 			return right.getElement();
 		}
 
+		/**
+		* getter method that returns the next idx pointer of the list
+		* @return int- returns the idx
+		*/
 		public int nextIndex(){
 			return idx;
 		}
 
+		/**
+		* getter method that returns the previous idx pointer of the list
+		* @return int- returns the previous idx
+		*/
 		public int previousIndex(){
 			return idx-1;
 		}
 
+		/**
+		* adds an element to the list at whatever position the idx is currently at
+		* @param E element - the element to add to the list
+		*/
 		public void add(E element){
 			if(element == null)
 			{
@@ -374,6 +414,10 @@ public class MyLinkedList<E> extends AbstractList<E> {
 			idx++;
 		}
 
+		/**
+		* sets the current idx's element to a new value given canRemoveOrSet == true
+		* @param E element - the new value to be set
+		*/
 		public void set(E element){
 			if (element == null){
 				throw new NullPointerException();
@@ -391,6 +435,10 @@ public class MyLinkedList<E> extends AbstractList<E> {
 			}
 		}
 
+		/**
+		* removes the value at the current position depending on whether 
+		* the iterator is forward or backward canRemoveOrSet == true
+		*/
 		public void remove(){
 
 			if (forward == true && canRemoveOrSet){
