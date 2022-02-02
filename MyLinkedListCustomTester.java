@@ -165,11 +165,18 @@ public class MyLinkedListCustomTester {
     }
 
     /**
-     * test the remove method when [fill in another one here]
+     * test the remove method when removing the first element and checking if the head is updated
      */
     @Test
     public void testRemoveTestTwo() {
+        boolean exceptionThrown = false;
+        testListIter.idx = 1;
+        testListIter.forward = true;
+        testListIter.canRemoveOrSet = true;
 
+        testListIter.remove();
+        testListIter.idx = 0;
+        assertEquals("Check if the first element was removed", "B", testList.head.getNext().getElement());
         
     }
 

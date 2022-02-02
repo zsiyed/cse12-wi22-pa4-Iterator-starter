@@ -394,16 +394,23 @@ public class MyLinkedList<E> extends AbstractList<E> {
 		public void remove(){
 
 			if (forward == true && canRemoveOrSet){
+
+				if(idx == 1)
+				{
+					head.setNext(left.getNext());
+				}
 				right.setPrev(left.getPrev());
 				left = left.getPrev();
-				
 				canRemoveOrSet = false;
 				idx--;
 			}
 			else if (canRemoveOrSet){
+				if(idx == size-1)
+				{
+					tail.setPrev(right.getPrev());
+				}
 				left.setNext(right.getNext());
 				right = right.getNext();
-
 				canRemoveOrSet = false;
 			}
 			else{
